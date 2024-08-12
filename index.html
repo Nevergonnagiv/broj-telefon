@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #282828;
+        color: #f5f5f5;
+        font: normal 20px Arial, Helvetica, sans-serif;
+    }
+    body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    body h2 {
+        margin-bottom: 100px;
+        font-size: 50px;
+        
+    }
+    .input-result {
+        margin-bottom: 70px;
+        
+    }
+    .input-result #span {
+        font-size: 50px;
+    }
+    .numbers {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border: none;
+      }
+      
+    .numbers li {
+        background-color: #007902;
+        padding: 70px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 50px;
+    }</style>
+    <title>Crcijev Broj Telefona</title>
+</head>
+<body>
+    <h2>Napiši svoj broj telefona: </h2>
+    <div class="input-result"><span id="span">0</span></div>
+    <ul class="numbers">
+            <button id="1"><li>1</li></button>
+            <button id="2"><li>2</li></button>
+            <button id="3"><li>3</li></button>
+            <button id="4"><li>4</li></button>
+            <button id="5"><li>5</li></button>
+            <button id="6"><li>6</li></button>
+            <button id="7"><li>7</li></button>
+            <button id="8"><li>8</li></button>
+            <button id="9"><li>9</li></button>
+            <button id="clear"><li>C</li></button>
+            <button id="0"><li>0</li></button>
+            <button id="equal"><li>=</li></button>
+    </ul>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var buttons = document.querySelectorAll("button");
+        var span = document.getElementById("span");
+        var spanValue = localStorage.getItem("spanValue") || "";
+        var h2Text = localStorage.getItem("h2Text") || "Napiši svoj broj telefona: ";
+    
+        span.innerHTML = spanValue;
+        document.querySelector("h2").innerHTML = h2Text;
+    
+        buttons.forEach(function(button) {
+        if (button.id !== "clear" && button.id !== "equal") {
+            button.addEventListener("click", function() {
+            spanValue += button.id;
+            span.innerHTML = spanValue;
+            localStorage.setItem("spanValue", spanValue);
+            });
+        } else if (button.id === "clear") {
+            button.addEventListener("click", function() {
+            spanValue = "0";
+            span.innerHTML = spanValue;
+            localStorage.setItem("spanValue", spanValue);
+            document.querySelector("h2").innerHTML = "Napiši svoj broj telefona: ";
+            localStorage.setItem("h2Text", "Napiši svoj broj telefona: ");
+            });
+        } else if (button.id === "equal") {
+            button.addEventListener("click", function() {
+            document.querySelector("h2").innerHTML = "Tvoj broj telefona je: ";
+            localStorage.setItem("h2Text", "Tvoj broj telefona je: ");
+            });
+        }
+        });
+    });
+
+    // I am 100% sure I didn't use Codeium to simplify my original 70 line code into 
+    // this 32 line of code, they are both the same thing. But shh don't tell anybody.
+    </script>
+
+</body>
+</html>
