@@ -90,7 +90,7 @@
             });
         } else if (button.id === "clear") {
             button.addEventListener("click", function() {
-            spanValue = "0";
+            spanValue = "";
             span.innerHTML = spanValue;
             localStorage.setItem("spanValue", spanValue);
             document.querySelector("h2").innerHTML = "Napiši svoj broj telefona: ";
